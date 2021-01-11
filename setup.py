@@ -27,6 +27,6 @@ setup(
     entry_points="""
         [console_scripts]
         click-odoo-fifo-vacuum=click_odoo_scripts.fifo_vacuum:main
-        click-odoo-fix-quants=click_odoo_contrib.fix_quants:main
+        click-odoo-fix-quants=click_odoo_scripts.fix_quants:main
     """,
 )
