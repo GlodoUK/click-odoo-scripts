@@ -4,7 +4,7 @@ setup(
     name="click-odoo-scripts",
     description="click-odoo scripts collection",
     long_description="click-odoo scripts collection",
-    version="12.0.1.0.0",
+    version="14.0.1.0.0",
     packages=find_packages(),
     include_package_data=True,
     setup_requires=[],
@@ -26,7 +26,5 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        click-odoo-fifo-vacuum=click_odoo_scripts.fifo_vacuum:main
-        click-odoo-fix-quants=click_odoo_scripts.fix_quants:main
     """,
 )
