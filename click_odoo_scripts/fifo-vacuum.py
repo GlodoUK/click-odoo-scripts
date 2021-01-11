@@ -1,17 +1,6 @@
 #!/usr/bin/env python
 
 
-""" Under 12.0 FIFO vacuum'ing only occurs in a limit number of scenarios. This
-results in a large amount of FIFO moves to be vacuumed when running the stock
-valuation report.
-
-On larger systems, where the stock valuation has not been run for a year, this
-can infact just not finish in a timely manner.
-
-This scripts splits the FIFO moves by product, rather than attempting to do
-them all in 1 go.
-"""
-
 import logging
 
 import click
@@ -23,6 +12,18 @@ _logger = logging.getLogger(__name__)
 @click.command()
 @click_odoo.env_options(default_log_level="info")
 def main(env):
+    """
+    Under 12.0 FIFO vacuum'ing only occurs in a limit number of scenarios. This
+    results in a large amount of FIFO moves to be vacuumed when running the stock
+    valuation report.
+
+    On larger systems, where the stock valuation has not been run for a year, this
+    can infact just not finish in a timely manner.
+
+    This scripts splits the FIFO moves by product, rather than attempting to do
+    them all in 1 go.
+    """
+
     _logger.info("Start split FIFO vacuum")
 
     fifo_valued_products = env["product.product"]

@@ -1,17 +1,4 @@
 #!/usr/bin/env python
-
-"""
-Fix up script for 12.0 where stock.quants and stock.moves can become out of
-sync. This is a workaround until we can find the ultimate cause.
-
-To execute: `./click-odoo-fix-quants.py -d DBNAME here`
-
-This will work through all mangled quants and fix them all until it finishes.
-On a large system, you want to run this at a lower traffic period of time ideally.
-
-This click-odoo script is based on an Odoo support ticket.
-"""
-
 import logging
 
 import click
@@ -23,6 +10,18 @@ _logger = logging.getLogger(__name__)
 @click.command()
 @click_odoo.env_options(default_log_level="info")
 def main(env):
+    """
+    Fix up script for 12.0 where stock.quants and stock.moves can become out of
+    sync. This is a workaround until we can find the ultimate cause.
+
+    To execute: `./click-odoo-fix-quants.py -d DBNAME here`
+
+    This will work through all mangled quants and fix them all until it finishes.
+    On a large system, you want to run this at a lower traffic period of time ideally.
+
+    This click-odoo script is based on an Odoo support ticket.
+    """
+
     _logger.info("Finding quants")
     quants = env["stock.quant"].sudo().search([])
     move_line_ids = []
